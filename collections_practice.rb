@@ -1,4 +1,5 @@
-# your code goes here
+require "pry"
+
 def begins_with_r(arr)
   i = 0
   while i < arr.size
@@ -59,12 +60,34 @@ def merge_data(arg1, arg2)
   arg1.each do |data_set|
     name = data_set[:first_name]
     arg2.each do |data_set_2|
-      if name == data_set_2[name]
-        new_hash = data_set_2[name]
-        new_hash[:first_name] = name
-        new_arr << new_hash
-      end
+      new_arr << data_set.merge(data_set_2[name])
     end
   end
   new_arr
+end
+
+def find_cool(arr)
+  result = []
+  arr.each do |elements|
+    elements.each do |key, value|
+      if value == "cool"
+        result << elements
+      end
+    end
+  end
+  result
+end
+
+def organize_schools(arr)
+  results = {}
+  arr.each do |school, location_hash|
+    location = location_hash[:location]
+    if results[location]
+      results[location] << school
+    else
+      results[location] = []
+      results[location] << school
+    end
+  end
+  results
 end
