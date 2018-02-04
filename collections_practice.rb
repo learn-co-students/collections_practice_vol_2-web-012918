@@ -1,3 +1,4 @@
+
 def begins_with_r(arr)
   i = 0
   while i < arr.size
